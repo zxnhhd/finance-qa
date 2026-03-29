@@ -1,0 +1,6 @@
+{
+  "name": "gomoku-game",
+  "version": "1.0.0",
+  "description": "五子棋游戏",
+  "private": true
+}

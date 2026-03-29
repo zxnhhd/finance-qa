@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五子棋游戏</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #gameBoard {
+            border: 2px solid #333;
+            background-color: #deb887;
+        }
+        #gameStatus {
+            font-size: 1.2em;
+            color: #333;
+            margin: 10px 0;
+        }
+        #controls {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>五子棋游戏</h1>
+    <div id="gameContainer">
+        <canvas id="gameBoard" width="600" height="600"></canvas>
+        <div id="gameStatus">游戏开始！轮到黑子下</div>
+        <div id="controls">
+            <button id="restartBtn">重新开始</button>
+            <button id="aiModeBtn">切换AI模式</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
