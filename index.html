@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="FinanceQA — 财务问答知识库，帮助检索常见个人理财、投资、税务与企业财务问题。" />
-  <title>FinanceQA · 财务问答</title>
+  <meta name="description" content="FinanceQA — 基于《资金支付体系优化方案报告》的财务问答知识库。" />
+  <title>FinanceQA · 资金支付体系问答</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Manrope:wght@400;500;650&display=swap" rel="stylesheet" />
@@ -17,38 +17,39 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-name">FinanceQA</span>
       </a>
-      <span class="nav-note">财务问答知识库</span>
+      <span class="nav-note" id="baselineBadge">基准：资金支付体系优化方案报告</span>
     </nav>
   </header>
 
   <main class="page">
     <section class="hero">
-      <h1>把财务问题问清楚</h1>
+      <h1>资金支付体系问答</h1>
       <p>
-        面向个人理财、投资入门、税务常识与企业财务的轻量问答站。
-        先从本地知识库检索答案，后续可接入大模型或专业内容源。
+        所有答案以《资金支付体系优化方案报告》数据为唯一基准。
+        覆盖账户冻结、机会成本、第三方手续费、对公税负与组合收款方案。
       </p>
     </section>
 
     <section class="ask-panel" aria-labelledby="ask-heading">
-      <label class="ask-label" id="ask-heading" for="questionInput">直接提问</label>
+      <label class="ask-label" id="ask-heading" for="questionInput">基于报告提问</label>
       <div class="ask-row">
         <textarea
           id="questionInput"
           rows="2"
-          placeholder="例如：应急储备金应该准备多少？"
+          placeholder="例如：为什么推荐方案 B？日均冻结资金是多少？"
           aria-label="输入财务问题"
         ></textarea>
         <button type="button" id="askBtn">提问</button>
       </div>
       <div id="answerBox" class="answer-box" role="status" aria-live="polite"></div>
       <p class="disclaimer">
-        内容仅供学习参考，不构成投资、税务或法律建议。重大决策请咨询持证专业人士。
+        答案仅复述报告测算口径，供内部讨论参考；不构成投资、税务或法律建议。
+        报告数据若更新，需同步刷新基准文件后再问答。
       </p>
     </section>
 
     <div class="toolbar">
-      <h2 class="section-title">知识库</h2>
+      <h2 class="section-title">报告知识库</h2>
       <div class="filters" id="categoryFilters" role="tablist" aria-label="分类筛选"></div>
     </div>
 
@@ -56,7 +57,7 @@
       <input
         type="search"
         id="searchInput"
-        placeholder="搜索问题、标签或关键词…"
+        placeholder="搜索报告中的问题、指标或关键词…"
         aria-label="搜索知识库"
       />
     </div>
@@ -65,7 +66,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>FinanceQA · 本地知识库初始化版本 · 可继续扩展问答条目与检索能力</p>
+    <p id="footerMeta">FinanceQA · 数据基准见 data/report-baseline.json</p>
   </footer>
 
   <script src="js/knowledge.js"></script>
