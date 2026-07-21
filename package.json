@@ -1,6 +1,9 @@
 {
-  "name": "gomoku-game",
+  "name": "finance-qa",
   "version": "1.0.0",
-  "description": "五子棋游戏",
-  "private": true
+  "description": "财务问答知识库 — 常见财务问题检索与解答",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve ."
+  }
 }

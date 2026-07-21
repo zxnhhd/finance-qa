@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>五子棋游戏</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            color: #333;
-            margin: 20px 0;
-        }
-        #gameContainer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        #gameBoard {
-            border: 2px solid #333;
-            background-color: #deb887;
-        }
-        #gameStatus {
-            font-size: 1.2em;
-            color: #333;
-            margin: 10px 0;
-        }
-        #controls {
-            display: flex;
-            gap: 10px;
-        }
-        button {
-            padding: 8px 16px;
-            font-size: 1em;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FinanceQA — 财务问答知识库，帮助检索常见个人理财、投资、税务与企业财务问题。" />
+  <title>FinanceQA · 财务问答</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Manrope:wght@400;500;650&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>五子棋游戏</h1>
-    <div id="gameContainer">
-        <canvas id="gameBoard" width="600" height="600"></canvas>
-        <div id="gameStatus">游戏开始！轮到黑子下</div>
-        <div id="controls">
-            <button id="restartBtn">重新开始</button>
-            <button id="aiModeBtn">切换AI模式</button>
-        </div>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">FinanceQA</span>
+      </a>
+      <span class="nav-note">财务问答知识库</span>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>把财务问题问清楚</h1>
+      <p>
+        面向个人理财、投资入门、税务常识与企业财务的轻量问答站。
+        先从本地知识库检索答案，后续可接入大模型或专业内容源。
+      </p>
+    </section>
+
+    <section class="ask-panel" aria-labelledby="ask-heading">
+      <label class="ask-label" id="ask-heading" for="questionInput">直接提问</label>
+      <div class="ask-row">
+        <textarea
+          id="questionInput"
+          rows="2"
+          placeholder="例如：应急储备金应该准备多少？"
+          aria-label="输入财务问题"
+        ></textarea>
+        <button type="button" id="askBtn">提问</button>
+      </div>
+      <div id="answerBox" class="answer-box" role="status" aria-live="polite"></div>
+      <p class="disclaimer">
+        内容仅供学习参考，不构成投资、税务或法律建议。重大决策请咨询持证专业人士。
+      </p>
+    </section>
+
+    <div class="toolbar">
+      <h2 class="section-title">知识库</h2>
+      <div class="filters" id="categoryFilters" role="tablist" aria-label="分类筛选"></div>
     </div>
-    <script src="game.js"></script>
+
+    <div class="search-wrap">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="搜索问题、标签或关键词…"
+        aria-label="搜索知识库"
+      />
+    </div>
+
+    <section class="faq-list" id="faqList" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>FinanceQA · 本地知识库初始化版本 · 可继续扩展问答条目与检索能力</p>
+  </footer>
+
+  <script src="js/knowledge.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
