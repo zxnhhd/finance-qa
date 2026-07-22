@@ -21,16 +21,19 @@
       "monthlyReturnRate": 0.08,
       "returnDayDivisor": 30,
       "capitalTurnoverMonths": 9,
-      "impliedReturnPerRound": 0.72,
-      "impliedSimpleAnnualReturn": 0.96,
-      "opportunityCostFormula": "冻结金额 × 月化回报率(8%) × 冻结天数 ÷ 30",
-      "opportunityCostNote": "资金滚动周转，9个月翻一轮；单轮理论回报=8%×9=72%；简单年化约96%（8%×12）。已替代原年化8%、÷365口径。"
+      "opportunityCostFormula": "冻结金额 × [(1 + 8%)^(冻结天数 ÷ 30) − 1]",
+      "opportunityCostNote": "月收益继续投入并复利；9个月后本金倍数约1.999，即接近翻倍。",
+      "compounding": true,
+      "nineMonthCapitalMultiplier": 1.9990046271,
+      "nineMonthCompoundReturn": 0.9990046271,
+      "effectiveAnnualReturn": 1.5181701168
     },
     "notes": [
       "本文件是后续问答的唯一数据基准。",
-      "机会成本已按月化回报率8%、÷30重算；资金滚动9个月翻一轮。",
+      "机会成本按月化回报率8%复利计算：本金×[(1.08)^(天数÷30)−1]。",
+      "当月收益继续投入；连续9个月后本金约为原来的1.999倍，接近翻倍。",
       "若报告数据变更，需同步更新本文件与 js/knowledge.js，并提升 baselineVersion。",
-      "变更记录：2026-07-22 机会成本口径由年化8%/365改为月化8%/30。"
+      "变更记录：2026-07-22 明确月化8%为复利，而非单利。"
     ]
   },
   "accountOverview": {
@@ -75,11 +78,11 @@
   },
   "freezeSummary": {
     "totalFreezeAmount": 42277626.12,
-    "totalOpportunityCost": 448006.4,
-    "opportunityCostFormula": "冻结金额 × 8% × 冻结天数 ÷ 30",
-    "capitalLossRate57d": 0.056001,
-    "annualizedOpportunityCost": 2868812.91,
-    "annualizedLossRate": 0.358602,
+    "totalOpportunityCost": 435555.06,
+    "opportunityCostFormula": "冻结金额 × [(1 + 8%)^(冻结天数 ÷ 30) − 1]",
+    "capitalLossRate57d": 0.054444,
+    "annualizedOpportunityCost": 2789080.64,
+    "annualizedLossRate": 0.348635,
     "avgDailyFrozenCapital": 2947410.52,
     "avgDailyFrozenShareOfOperatingCapital": 0.3684,
     "currentUnfrozenAmount": 1639857.43,
@@ -92,7 +95,8 @@
     "opportunityCostAssumptions": {
       "monthlyReturnRate": 0.08,
       "dayDivisor": 30,
-      "turnoverMonthsPerRound": 9
+      "compounding": true,
+      "monthsToNearlyDouble": 9
     },
     "previousOpportunityCostAnnual8pct": 36822.47,
     "causeBreakdown": [
@@ -110,27 +114,27 @@
   },
   "judicialFreeze": {
     "principal": 7046612.17,
-    "opportunityCostToCutoff": 2035637.2,
-    "lossRateVsOperatingCapital": 0.254455,
-    "annualizedOpportunityCostIfPersist": 6764747.68,
+    "opportunityCostToCutoff": 2264764.55,
+    "lossRateVsOperatingCapital": 0.283096,
+    "annualizedOpportunityCostIfPersist": 10698009.43,
     "items": [
       {
         "start": "2026-03-26",
         "amount": 5233682.49,
         "daysToCutoff": 111,
-        "opportunityCost": 1549170.02
+        "opportunityCost": 1724170.8
       },
       {
         "start": "2026-03-26",
         "amount": 1622929.68,
         "daysToCutoff": 111,
-        "opportunityCost": 480387.19
+        "opportunityCost": 534653.75
       },
       {
         "start": "2026-07-03",
         "amount": 190000.0,
         "daysToCutoff": 12,
-        "opportunityCost": 6080.0
+        "opportunityCost": 5940.0
       }
     ],
     "longTermScenarios": [
@@ -138,37 +142,37 @@
         "name": "短期较乐观",
         "months": 6,
         "unrecoverableRate": 0.1,
-        "futureOppCostWan": 338.24,
-        "cumOppCostWan": 541.8,
+        "futureOppCostWan": 413.55,
+        "cumOppCostWan": 640.02,
         "principalLossWan": 70.47,
-        "totalLossWan": 612.27
+        "totalLossWan": 710.49
       },
       {
         "name": "一年期",
         "months": 12,
         "unrecoverableRate": 0.3,
-        "futureOppCostWan": 676.47,
-        "cumOppCostWan": 880.04,
+        "futureOppCostWan": 1069.8,
+        "cumOppCostWan": 1296.27,
         "principalLossWan": 211.4,
-        "totalLossWan": 1091.44
+        "totalLossWan": 1507.67
       },
       {
         "name": "两年期",
         "months": 24,
         "unrecoverableRate": 0.6,
-        "futureOppCostWan": 1352.95,
-        "cumOppCostWan": 1556.51,
+        "futureOppCostWan": 3763.72,
+        "cumOppCostWan": 3990.2,
         "principalLossWan": 422.8,
-        "totalLossWan": 1979.31
+        "totalLossWan": 4413.0
       },
       {
         "name": "三年期较悲观",
         "months": 36,
         "unrecoverableRate": 0.8,
-        "futureOppCostWan": 2029.42,
-        "cumOppCostWan": 2232.99,
+        "futureOppCostWan": 10547.49,
+        "cumOppCostWan": 10773.97,
         "principalLossWan": 563.73,
-        "totalLossWan": 2796.72
+        "totalLossWan": 11337.7
       }
     ]
   },
@@ -183,7 +187,7 @@
         "upgradeAmount": 8744.2,
         "principalLoss": 2623.26,
         "oppCost": 699.54,
-        "totalLoss": 3322.8
+        "totalLoss": 3322.79
       },
       {
         "date": "2026-06-29",
@@ -193,8 +197,8 @@
         "upgradeProb": 0.8,
         "upgradeAmount": 491836.43,
         "principalLoss": 147550.93,
-        "oppCost": 20985.02,
-        "totalLoss": 168535.95
+        "oppCost": 20607.91,
+        "totalLoss": 168158.83
       },
       {
         "date": "2026-07-02",
@@ -204,8 +208,8 @@
         "upgradeProb": 0.7,
         "upgradeAmount": 70000,
         "principalLoss": 21000,
-        "oppCost": 2426.67,
-        "totalLoss": 23426.67
+        "oppCost": 2373.85,
+        "totalLoss": 23373.85
       },
       {
         "date": "2026-07-08",
@@ -215,8 +219,8 @@
         "upgradeProb": 0.7,
         "upgradeAmount": 412527.5,
         "principalLoss": 123758.25,
-        "oppCost": 7700.51,
-        "totalLoss": 131458.76
+        "oppCost": 7474.91,
+        "totalLoss": 131233.16
       },
       {
         "date": "2026-07-14",
@@ -226,16 +230,16 @@
         "upgradeProb": 0.7,
         "upgradeAmount": 224814.26,
         "principalLoss": 67444.28,
-        "oppCost": 599.5,
-        "totalLoss": 68043.78
+        "oppCost": 577.47,
+        "totalLoss": 68021.75
       }
     ],
     "totals": {
       "amount": 1639857.43,
       "upgradeAmount": 1207922.39,
       "principalLoss": 362376.72,
-      "oppCost": 32411.24,
-      "totalLoss": 394787.96
+      "oppCost": 31733.67,
+      "totalLoss": 394110.39
     },
     "principalLossFormula": "冻结金额 × 升级概率 × 30%（司法冻结后 12 个月无法追回中性假设）"
   },
@@ -391,7 +395,8 @@
     "judicialBadDebtRate": 0.000334,
     "combinedPrivateCardHiddenRate": 0.00057039,
     "monthlyBadDebtExpectation": 190724.59,
-    "previousJuneOpportunityCostAnnual8pct": 11106.96
+    "previousJuneOpportunityCostAnnual8pct": 11106.96,
+    "note": "6月为单月汇总；一个月复利一期仍为8%，故此项与月化8%单月结果一致。"
   },
   "recommendedPlans": {
     "budgetCeilingWan": 100,
