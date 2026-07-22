@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "资金支付体系优化方案报告",
-    "baselineVersion": "2026-07-15",
+    "baselineVersion": "2026-07-22",
     "sourceFile": "data/source/资金支付体系优化方案报告.pdf",
     "statisticsPeriod": {
       "start": "2026-05-20",
@@ -9,7 +9,6 @@
       "days": 57
     },
     "assumptions": {
-      "annualReturnRate": 0.08,
       "operatingCapital": 8000000,
       "thirdPartyFeeRate": 0.0032,
       "corporateVatEffectiveRateOnGmv": 0.0064,
@@ -18,11 +17,20 @@
       "monthlyConsignmentFeePerEntity": 400000,
       "monthlyCostBudgetCeiling": 1000000,
       "avgMonthlySalesH1": 297616216.98,
-      "judicialUnrecoverableProb12mNeutral": 0.3
+      "judicialUnrecoverableProb12mNeutral": 0.3,
+      "monthlyReturnRate": 0.08,
+      "returnDayDivisor": 30,
+      "capitalTurnoverMonths": 9,
+      "impliedReturnPerRound": 0.72,
+      "impliedSimpleAnnualReturn": 0.96,
+      "opportunityCostFormula": "冻结金额 × 月化回报率(8%) × 冻结天数 ÷ 30",
+      "opportunityCostNote": "资金滚动周转，9个月翻一轮；单轮理论回报=8%×9=72%；简单年化约96%（8%×12）。已替代原年化8%、÷365口径。"
     },
     "notes": [
       "本文件是后续问答的唯一数据基准。",
-      "若报告数据变更，需同步更新本文件与 js/knowledge.js，并提升 baselineVersion。"
+      "机会成本已按月化回报率8%、÷30重算；资金滚动9个月翻一轮。",
+      "若报告数据变更，需同步更新本文件与 js/knowledge.js，并提升 baselineVersion。",
+      "变更记录：2026-07-22 机会成本口径由年化8%/365改为月化8%/30。"
     ]
   },
   "accountOverview": {
@@ -34,10 +42,30 @@
       "司法冻结账户"
     ],
     "upcomingLimits": [
-      { "holder": "张昭诗", "bank": "杭州", "targetLimitWan": 200, "eta": "预计 7.22" },
-      { "holder": "李金成", "bank": "杭州", "targetLimitWan": 200, "eta": "预计 7.22" },
-      { "holder": "张昭诗", "bank": "浦发", "targetLimitWan": 100, "eta": "预计 7 月底" },
-      { "holder": "张年", "bank": "浦发", "targetLimitWan": 100, "eta": "预计 7 月底" }
+      {
+        "holder": "张昭诗",
+        "bank": "杭州",
+        "targetLimitWan": 200,
+        "eta": "预计 7.22"
+      },
+      {
+        "holder": "李金成",
+        "bank": "杭州",
+        "targetLimitWan": 200,
+        "eta": "预计 7.22"
+      },
+      {
+        "holder": "张昭诗",
+        "bank": "浦发",
+        "targetLimitWan": 100,
+        "eta": "预计 7 月底"
+      },
+      {
+        "holder": "张年",
+        "bank": "浦发",
+        "targetLimitWan": 100,
+        "eta": "预计 7 月底"
+      }
     ],
     "coreProblems": [
       "资金流动性缺口巨大：约 130 余万长期冻结，叠加在用卡日限额，采购打款排队",
@@ -47,71 +75,242 @@
   },
   "freezeSummary": {
     "totalFreezeAmount": 42277626.12,
-    "totalOpportunityCost": 36822.47,
-    "opportunityCostFormula": "冻结金额 × 8% × 冻结天数 ÷ 365",
-    "capitalLossRate57d": 0.0046,
-    "annualizedOpportunityCost": 235600,
-    "annualizedLossRate": 0.0295,
-    "avgDailyFrozenCapital": 2947400,
+    "totalOpportunityCost": 448006.4,
+    "opportunityCostFormula": "冻结金额 × 8% × 冻结天数 ÷ 30",
+    "capitalLossRate57d": 0.056001,
+    "annualizedOpportunityCost": 2868812.91,
+    "annualizedLossRate": 0.358602,
+    "avgDailyFrozenCapital": 2947410.52,
     "avgDailyFrozenShareOfOperatingCapital": 0.3684,
     "currentUnfrozenAmount": 1639857.43,
     "currentUnfrozenShare": 0.205,
     "primaryCause": {
-      "name": "银行大额风控",
-      "shareOfFreezeAmount": 0.47
-    }
+      "name": "银行风控",
+      "shareOfFreezeAmount": 0.64,
+      "amount": 27088454.8
+    },
+    "opportunityCostAssumptions": {
+      "monthlyReturnRate": 0.08,
+      "dayDivisor": 30,
+      "turnoverMonthsPerRound": 9
+    },
+    "previousOpportunityCostAnnual8pct": 36822.47,
+    "causeBreakdown": [
+      {
+        "name": "银行风控",
+        "amount": 27088454.8,
+        "share": 0.64
+      },
+      {
+        "name": "司法冻结",
+        "amount": 15189171.32,
+        "share": 0.36
+      }
+    ]
   },
   "judicialFreeze": {
     "principal": 7046612.17,
-    "opportunityCostToCutoff": 167312.65,
-    "lossRateVsOperatingCapital": 0.0209,
-    "annualizedOpportunityCostIfPersist": 563700,
+    "opportunityCostToCutoff": 2035637.2,
+    "lossRateVsOperatingCapital": 0.254455,
+    "annualizedOpportunityCostIfPersist": 6764747.68,
     "items": [
-      { "start": "2026-03-26", "amount": 5233682.49, "daysToCutoff": 111, "opportunityCost": 127329.04 },
-      { "start": "2026-03-26", "amount": 1622929.68, "daysToCutoff": 111, "opportunityCost": 39483.88 },
-      { "start": "2026-07-03", "amount": 190000.0, "daysToCutoff": 12, "opportunityCost": 499.73 }
+      {
+        "start": "2026-03-26",
+        "amount": 5233682.49,
+        "daysToCutoff": 111,
+        "opportunityCost": 1549170.02
+      },
+      {
+        "start": "2026-03-26",
+        "amount": 1622929.68,
+        "daysToCutoff": 111,
+        "opportunityCost": 480387.19
+      },
+      {
+        "start": "2026-07-03",
+        "amount": 190000.0,
+        "daysToCutoff": 12,
+        "opportunityCost": 6080.0
+      }
     ],
     "longTermScenarios": [
-      { "name": "短期较乐观", "months": 6, "unrecoverableRate": 0.1, "futureOppCostWan": 28.19, "cumOppCostWan": 44.92, "principalLossWan": 70.47, "totalLossWan": 115.38 },
-      { "name": "一年期", "months": 12, "unrecoverableRate": 0.3, "futureOppCostWan": 56.37, "cumOppCostWan": 73.1, "principalLossWan": 211.4, "totalLossWan": 284.5 },
-      { "name": "两年期", "months": 24, "unrecoverableRate": 0.6, "futureOppCostWan": 112.75, "cumOppCostWan": 129.48, "principalLossWan": 422.8, "totalLossWan": 552.27 },
-      { "name": "三年期较悲观", "months": 36, "unrecoverableRate": 0.8, "futureOppCostWan": 169.12, "cumOppCostWan": 185.85, "principalLossWan": 563.73, "totalLossWan": 749.58 }
+      {
+        "name": "短期较乐观",
+        "months": 6,
+        "unrecoverableRate": 0.1,
+        "futureOppCostWan": 338.24,
+        "cumOppCostWan": 541.8,
+        "principalLossWan": 70.47,
+        "totalLossWan": 612.27
+      },
+      {
+        "name": "一年期",
+        "months": 12,
+        "unrecoverableRate": 0.3,
+        "futureOppCostWan": 676.47,
+        "cumOppCostWan": 880.04,
+        "principalLossWan": 211.4,
+        "totalLossWan": 1091.44
+      },
+      {
+        "name": "两年期",
+        "months": 24,
+        "unrecoverableRate": 0.6,
+        "futureOppCostWan": 1352.95,
+        "cumOppCostWan": 1556.51,
+        "principalLossWan": 422.8,
+        "totalLossWan": 1979.31
+      },
+      {
+        "name": "三年期较悲观",
+        "months": 36,
+        "unrecoverableRate": 0.8,
+        "futureOppCostWan": 2029.42,
+        "cumOppCostWan": 2232.99,
+        "principalLossWan": 563.73,
+        "totalLossWan": 2796.72
+      }
     ]
   },
   "upgradeRiskOnUnfrozen": {
     "items": [
-      { "date": "2026-06-15", "amount": 14573.66, "type": "涉案交易", "days": 30, "upgradeProb": 0.6, "upgradeAmount": 8744.2, "principalLoss": 2623.26, "oppCost": 795.36, "totalLoss": 3418.62 },
-      { "date": "2026-06-29", "amount": 614795.54, "type": "公安冻结", "days": 16, "upgradeProb": 0.8, "upgradeAmount": 491836.43, "principalLoss": 147550.93, "oppCost": 41502.91, "totalLoss": 189053.84 },
-      { "date": "2026-07-02", "amount": 100000, "type": "公安协查", "days": 13, "upgradeProb": 0.7, "upgradeAmount": 70000, "principalLoss": 21000, "oppCost": 5884.93, "totalLoss": 26884.93 },
-      { "date": "2026-07-08", "amount": 589325, "type": "公安协查", "days": 7, "upgradeProb": 0.7, "upgradeAmount": 412527.5, "principalLoss": 123758.25, "oppCost": 33906.37, "totalLoss": 157664.62 },
-      { "date": "2026-07-14", "amount": 321163.23, "type": "公安协查", "days": 1, "upgradeProb": 0.7, "upgradeAmount": 224814.26, "principalLoss": 67444.28, "oppCost": 18055.53, "totalLoss": 85499.81 }
+      {
+        "date": "2026-06-15",
+        "amount": 14573.66,
+        "type": "涉案交易",
+        "days": 30,
+        "upgradeProb": 0.6,
+        "upgradeAmount": 8744.2,
+        "principalLoss": 2623.26,
+        "oppCost": 699.54,
+        "totalLoss": 3322.8
+      },
+      {
+        "date": "2026-06-29",
+        "amount": 614795.54,
+        "type": "公安冻结",
+        "days": 16,
+        "upgradeProb": 0.8,
+        "upgradeAmount": 491836.43,
+        "principalLoss": 147550.93,
+        "oppCost": 20985.02,
+        "totalLoss": 168535.95
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 100000,
+        "type": "公安协查",
+        "days": 13,
+        "upgradeProb": 0.7,
+        "upgradeAmount": 70000,
+        "principalLoss": 21000,
+        "oppCost": 2426.67,
+        "totalLoss": 23426.67
+      },
+      {
+        "date": "2026-07-08",
+        "amount": 589325,
+        "type": "公安协查",
+        "days": 7,
+        "upgradeProb": 0.7,
+        "upgradeAmount": 412527.5,
+        "principalLoss": 123758.25,
+        "oppCost": 7700.51,
+        "totalLoss": 131458.76
+      },
+      {
+        "date": "2026-07-14",
+        "amount": 321163.23,
+        "type": "公安协查",
+        "days": 1,
+        "upgradeProb": 0.7,
+        "upgradeAmount": 224814.26,
+        "principalLoss": 67444.28,
+        "oppCost": 599.5,
+        "totalLoss": 68043.78
+      }
     ],
     "totals": {
       "amount": 1639857.43,
       "upgradeAmount": 1207922.39,
       "principalLoss": 362376.72,
-      "oppCost": 100145.11,
-      "totalLoss": 462521.82
+      "oppCost": 32411.24,
+      "totalLoss": 394787.96
     },
     "principalLossFormula": "冻结金额 × 升级概率 × 30%（司法冻结后 12 个月无法追回中性假设）"
   },
   "thirdPartyPayment": {
     "feeRate": 0.0032,
     "feeOnFreezeBases": [
-      { "base": "冻结金额合计", "baseWan": 4227.76, "feeWan": 13.53 },
-      { "base": "日均冻结资金", "baseWan": 294.74, "feeWan": 0.94 },
-      { "base": "峰值单日冻结", "baseWan": 1261.83, "feeWan": 4.04 },
-      { "base": "当前未解冻", "baseWan": 163.99, "feeWan": 0.52 },
-      { "base": "运营资金总额", "baseWan": 800, "feeWan": 2.56 }
+      {
+        "base": "冻结金额合计",
+        "baseWan": 4227.76,
+        "feeWan": 13.53
+      },
+      {
+        "base": "日均冻结资金",
+        "baseWan": 294.74,
+        "feeWan": 0.94
+      },
+      {
+        "base": "峰值单日冻结",
+        "baseWan": 1261.83,
+        "feeWan": 4.04
+      },
+      {
+        "base": "当前未解冻",
+        "baseWan": 163.99,
+        "feeWan": 0.52
+      },
+      {
+        "base": "运营资金总额",
+        "baseWan": 800,
+        "feeWan": 2.56
+      }
     ],
     "monthlySalesAndFees": [
-      { "month": "2025-12", "sales": 231774280, "fee": 741677.7, "growth": null },
-      { "month": "2026-01", "sales": 254608842, "fee": 814748.29, "growth": 0.0985 },
-      { "month": "2026-02", "sales": 216509084, "fee": 692829.07, "growth": -0.1496 },
-      { "month": "2026-03", "sales": 256373869.88, "fee": 820396.38, "growth": 0.1841 },
-      { "month": "2026-04", "sales": 312276006, "fee": 999283.22, "growth": 0.218 },
-      { "month": "2026-05", "sales": 372464402, "fee": 1191886.09, "growth": 0.1927 },
-      { "month": "2026-06", "sales": 373465098, "fee": 1195088.31, "growth": 0.0027 }
+      {
+        "month": "2025-12",
+        "sales": 231774280,
+        "fee": 741677.7,
+        "growth": null
+      },
+      {
+        "month": "2026-01",
+        "sales": 254608842,
+        "fee": 814748.29,
+        "growth": 0.0985
+      },
+      {
+        "month": "2026-02",
+        "sales": 216509084,
+        "fee": 692829.07,
+        "growth": -0.1496
+      },
+      {
+        "month": "2026-03",
+        "sales": 256373869.88,
+        "fee": 820396.38,
+        "growth": 0.1841
+      },
+      {
+        "month": "2026-04",
+        "sales": 312276006,
+        "fee": 999283.22,
+        "growth": 0.218
+      },
+      {
+        "month": "2026-05",
+        "sales": 372464402,
+        "fee": 1191886.09,
+        "growth": 0.1927
+      },
+      {
+        "month": "2026-06",
+        "sales": 373465098,
+        "fee": 1195088.31,
+        "growth": 0.0027
+      }
     ],
     "h1Totals": {
       "note": "报告按 1-6 月测算平均手续费；合计销售额口径约 17.86 亿 / 6 ≈ 2.98 亿月均",
@@ -120,12 +319,36 @@
       "avgGrowthRate": 0.0911
     },
     "feeForecast": [
-      { "month": "2026-07", "salesWan": 40748.78, "feeWan": 130.4 },
-      { "month": "2026-08", "salesWan": 44460.99, "feeWan": 142.28 },
-      { "month": "2026-09", "salesWan": 48511.39, "feeWan": 155.24 },
-      { "month": "2026-10", "salesWan": 52930.77, "feeWan": 169.38 },
-      { "month": "2026-11", "salesWan": 57752.77, "feeWan": 184.81 },
-      { "month": "2026-12", "salesWan": 63014.04, "feeWan": 201.64 }
+      {
+        "month": "2026-07",
+        "salesWan": 40748.78,
+        "feeWan": 130.4
+      },
+      {
+        "month": "2026-08",
+        "salesWan": 44460.99,
+        "feeWan": 142.28
+      },
+      {
+        "month": "2026-09",
+        "salesWan": 48511.39,
+        "feeWan": 155.24
+      },
+      {
+        "month": "2026-10",
+        "salesWan": 52930.77,
+        "feeWan": 169.38
+      },
+      {
+        "month": "2026-11",
+        "salesWan": 57752.77,
+        "feeWan": 184.81
+      },
+      {
+        "month": "2026-12",
+        "salesWan": 63014.04,
+        "feeWan": 201.64
+      }
     ]
   },
   "corporateCollection": {
@@ -140,19 +363,35 @@
     "h1TaxEstimateTotalWan": 1146.42,
     "h1MonthlyAvgVatWan": 191.07,
     "h2Scenarios": [
-      { "name": "A. 持平（推荐基准）", "monthlySales": 297616216.98, "monthlyVatWan": 191.07, "h2TotalWan": 1146.42 },
-      { "name": "B. 持平 6 月水平", "monthlySales": 373472200, "monthlyVatWan": 239.77, "h2TotalWan": 1438.61 },
-      { "name": "C. 按 9.11% 环比增长", "monthlySales": 512374309.91, "monthlyVatWan": 328.94, "h2TotalWan": 1973.67 }
+      {
+        "name": "A. 持平（推荐基准）",
+        "monthlySales": 297616216.98,
+        "monthlyVatWan": 191.07,
+        "h2TotalWan": 1146.42
+      },
+      {
+        "name": "B. 持平 6 月水平",
+        "monthlySales": 373472200,
+        "monthlyVatWan": 239.77,
+        "h2TotalWan": 1438.61
+      },
+      {
+        "name": "C. 按 9.11% 环比增长",
+        "monthlySales": 512374309.91,
+        "monthlyVatWan": 328.94,
+        "h2TotalWan": 1973.67
+      }
     ]
   },
   "comboPricingInputs": {
     "juneTotalFlow": 781100173.8,
     "juneBankCardFlow": 571661769.1,
-    "juneOpportunityCost": 11106.96,
-    "freezeRiskFeeRate": 0.000019,
+    "juneOpportunityCost": 135134.68,
+    "freezeRiskFeeRate": 0.00023639,
     "judicialBadDebtRate": 0.000334,
-    "combinedPrivateCardHiddenRate": 0.000353,
-    "monthlyBadDebtExpectation": 190724.59
+    "combinedPrivateCardHiddenRate": 0.00057039,
+    "monthlyBadDebtExpectation": 190724.59,
+    "previousJuneOpportunityCostAnnual8pct": 11106.96
   },
   "recommendedPlans": {
     "budgetCeilingWan": 100,
@@ -165,9 +404,9 @@
         "thirdPartyPct": 0.75,
         "privateCardPct": 0.2446,
         "taxPlusThirdPartyWan": 73.12,
-        "privateHiddenWan": 2.57,
-        "totalWan": 75.69,
-        "relativeToSales": 0.002543
+        "privateHiddenWan": 4.15,
+        "totalWan": 77.27,
+        "relativeToSales": 0.002597
       },
       {
         "id": "B",
@@ -178,9 +417,9 @@
         "thirdPartyPct": 0.85,
         "privateCardPct": 0.1419,
         "taxPlusThirdPartyWan": 83.5,
-        "privateHiddenWan": 1.49,
-        "totalWan": 84.99,
-        "relativeToSales": 0.002856
+        "privateHiddenWan": 2.41,
+        "totalWan": 85.91,
+        "relativeToSales": 0.002886
       },
       {
         "id": "C",
@@ -190,14 +429,14 @@
         "thirdPartyPct": 0.92,
         "privateCardPct": 0.0692,
         "taxPlusThirdPartyWan": 91.01,
-        "privateHiddenWan": 0.73,
-        "totalWan": 91.74,
-        "relativeToSales": 0.003082
+        "privateHiddenWan": 1.18,
+        "totalWan": 92.19,
+        "relativeToSales": 0.003098
       }
     ],
     "recommendation": "B",
     "recommendationReasons": [
-      "预算舒适：综合约 85 万，距 100 万预算有余量",
+      "预算舒适：综合约 86 万，距 100 万预算有余量",
       "控冻到位：第三方 85%，私卡从约 25% 压到约 14%",
       "采购不断：仍留约 14% 私卡支撑 ≤10 万小额与应急",
       "主体可落地：6 家、每家寄售服务费 40 万，比 8 家更好管"
