@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "冻结资金改走第三方平台手续费测算",
+    "feeRate": 0.0032,
+    "feeRateNote": "按 0.32% 计（报告口径）；表头若写 0.25% 以实际 0.32% 为准",
+    "sourceFreezeLedger": "data/freeze-ledger.json",
+    "cutoffDate": "2026-07-25",
+    "unit": "金额为元；表内展示可用万元"
+  },
+  "items": [
+    {
+      "base": "冻结金额合计",
+      "baseAmount": 46115587.15,
+      "baseWan": 4611.56,
+      "fee": 147569.88,
+      "feeWan": 14.76,
+      "rate": 0.0032
+    },
+    {
+      "base": "日均冻结资金",
+      "baseAmount": 2869566.23,
+      "baseWan": 286.96,
+      "fee": 9182.61,
+      "feeWan": 0.92,
+      "rate": 0.0032
+    },
+    {
+      "base": "峰值单日冻结",
+      "baseAmount": 12618338.85,
+      "baseWan": 1261.83,
+      "fee": 40378.68,
+      "feeWan": 4.04,
+      "rate": 0.0032,
+      "peakDate": "2026-07-02"
+    },
+    {
+      "base": "当前未解冻",
+      "baseAmount": 793809.62,
+      "baseWan": 79.38,
+      "fee": 2540.19,
+      "feeWan": 0.25,
+      "rate": 0.0032
+    },
+    {
+      "base": "运营资金总额",
+      "baseAmount": 8000000,
+      "baseWan": 800.0,
+      "fee": 25600.0,
+      "feeWan": 2.56,
+      "rate": 0.0032
+    }
+  ]
+}

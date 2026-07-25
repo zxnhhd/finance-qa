@@ -120,7 +120,9 @@
       "amount": 29623474.8
     },
     "excludesSpecialJudicial047": true,
-    "specialJudicial047Ref": "data/judicial-047-special.json"
+    "specialJudicial047Ref": "data/judicial-047-special.json",
+    "peakDailyFrozenCapital": 12618338.85,
+    "peakDailyFrozenDate": "2026-07-02"
   },
   "judicialFreeze": {
     "caseType": "special_judicial_047",
@@ -267,13 +269,13 @@
     "feeOnFreezeBases": [
       {
         "base": "冻结金额合计",
-        "baseWan": 4227.76,
-        "feeWan": 13.53
+        "baseWan": 4611.56,
+        "feeWan": 14.76
       },
       {
         "base": "日均冻结资金",
-        "baseWan": 294.74,
-        "feeWan": 0.94
+        "baseWan": 286.96,
+        "feeWan": 0.92
       },
       {
         "base": "峰值单日冻结",
@@ -282,12 +284,12 @@
       },
       {
         "base": "当前未解冻",
-        "baseWan": 163.99,
-        "feeWan": 0.52
+        "baseWan": 79.38,
+        "feeWan": 0.25
       },
       {
         "base": "运营资金总额",
-        "baseWan": 800,
+        "baseWan": 800.0,
         "feeWan": 2.56
       }
     ],
@@ -372,7 +374,9 @@
         "salesWan": 63014.04,
         "feeWan": 201.64
       }
-    ]
+    ],
+    "feeOnFreezeUpdatedAt": "2026-07-25",
+    "feeOnFreezeSource": "data/third-party-fee-on-freeze.json"
   },
   "corporateCollection": {
     "model": {
