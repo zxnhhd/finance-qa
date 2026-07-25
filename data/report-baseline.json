@@ -466,5 +466,15 @@
       "采购不断：仍留私卡缓冲支撑小额与应急",
       "主体可落地：6 家、每家寄售服务费 40 万"
     ]
+  },
+  "unfrozenJudicialRisk": {
+    "source": "data/unfrozen-judicial-risk.json",
+    "cutoffDate": "2026-07-25",
+    "totalAmount": 793809.62,
+    "totalOpportunityCost": 45250.4,
+    "totalPrincipalLoss": 171425.95,
+    "totalLoss": 216676.36,
+    "unrecoverableProb12m": 0.3,
+    "note": "普通明细3笔未解冻司法冻结风险预测；不含047专项。"
   }
 }
