@@ -155,7 +155,45 @@
         "status": "未解冻"
       }
     ],
-    "note": "047表款特别案例；三笔均未解冻；不计入 freeze-ledger 总机会成本。"
+    "note": "047表款特别案例；三笔均未解冻；不计入 freeze-ledger 总机会成本。",
+    "longTermScenarios": [
+      {
+        "name": "短期较乐观",
+        "months": 6,
+        "unrecoverableRate": 0.1,
+        "futureOppCostWan": 413.55,
+        "cumOppCostWan": 664.22,
+        "principalLossWan": 70.47,
+        "totalLossWan": 734.69
+      },
+      {
+        "name": "一年期",
+        "months": 12,
+        "unrecoverableRate": 0.3,
+        "futureOppCostWan": 1069.8,
+        "cumOppCostWan": 1320.47,
+        "principalLossWan": 211.4,
+        "totalLossWan": 1531.87
+      },
+      {
+        "name": "两年期",
+        "months": 24,
+        "unrecoverableRate": 0.6,
+        "futureOppCostWan": 3763.72,
+        "cumOppCostWan": 4014.4,
+        "principalLossWan": 422.8,
+        "totalLossWan": 4437.19
+      },
+      {
+        "name": "三年期较悲观",
+        "months": 36,
+        "unrecoverableRate": 0.8,
+        "futureOppCostWan": 10547.49,
+        "cumOppCostWan": 10798.16,
+        "principalLossWan": 563.73,
+        "totalLossWan": 11361.89
+      }
+    ]
   },
   "upgradeRiskOnUnfrozen": {
     "items": [

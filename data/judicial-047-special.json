@@ -55,5 +55,70 @@
       "opportunityCost": 11031.61,
       "legacyAnnual8pctTo20260715": 499.73
     }
-  ]
+  ],
+  "longTermScenarios": {
+    "asOf": "2026-07-25",
+    "alreadyOpportunityCost": 2506725.96,
+    "principal": 7046612.17,
+    "formula": {
+      "futureOppCost": "本金 × [(1.08)^未来月数 − 1]",
+      "cumOppCost": "截至日已产生机会成本 + 未来新增机会成本",
+      "principalLoss": "本金 × 预计无法追回率（风险情景，非已确认坏账）",
+      "totalLoss": "累计机会成本 + 预计本金损失"
+    },
+    "scenarios": [
+      {
+        "name": "短期较乐观",
+        "months": 6,
+        "unrecoverableRate": 0.1,
+        "futureOppCost": 4135475.75,
+        "futureOppCostWan": 413.55,
+        "cumOppCost": 6642201.71,
+        "cumOppCostWan": 664.22,
+        "principalLoss": 704661.22,
+        "principalLossWan": 70.47,
+        "totalLoss": 7346862.92,
+        "totalLossWan": 734.69
+      },
+      {
+        "name": "一年期",
+        "months": 12,
+        "unrecoverableRate": 0.3,
+        "futureOppCost": 10697956.02,
+        "futureOppCostWan": 1069.8,
+        "cumOppCost": 13204681.98,
+        "cumOppCostWan": 1320.47,
+        "principalLoss": 2113983.65,
+        "principalLossWan": 211.4,
+        "totalLoss": 15318665.63,
+        "totalLossWan": 1531.87
+      },
+      {
+        "name": "两年期",
+        "months": 24,
+        "unrecoverableRate": 0.6,
+        "futureOppCost": 37637229.19,
+        "futureOppCostWan": 3763.72,
+        "cumOppCost": 40143955.15,
+        "cumOppCostWan": 4014.4,
+        "principalLoss": 4227967.3,
+        "principalLossWan": 422.8,
+        "totalLoss": 44371922.45,
+        "totalLossWan": 4437.19
+      },
+      {
+        "name": "三年期较悲观",
+        "months": 36,
+        "unrecoverableRate": 0.8,
+        "futureOppCost": 105474901.84,
+        "futureOppCostWan": 10547.49,
+        "cumOppCost": 107981627.8,
+        "cumOppCostWan": 10798.16,
+        "principalLoss": 5637289.74,
+        "principalLossWan": 563.73,
+        "totalLoss": 113618917.53,
+        "totalLossWan": 11361.89
+      }
+    ]
+  }
 }
