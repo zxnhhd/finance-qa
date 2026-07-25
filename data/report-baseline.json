@@ -470,11 +470,12 @@
   "unfrozenJudicialRisk": {
     "source": "data/unfrozen-judicial-risk.json",
     "cutoffDate": "2026-07-25",
+    "horizonMonths": 12,
     "totalAmount": 793809.62,
-    "totalOpportunityCost": 45250.4,
-    "totalPrincipalLoss": 171425.95,
-    "totalLoss": 216676.36,
-    "unrecoverableProb12m": 0.3,
-    "note": "普通明细3笔未解冻司法冻结风险预测；不含047专项。"
+    "futurePrincipalLoss": 171425.95,
+    "futureOppCost12m": 867512.52,
+    "futureTotalRisk": 1038938.47,
+    "alreadyOpportunityCostToCutoff": 45250.4,
+    "note": "未来12个月风险预测；与047专项分开。"
   }
 }

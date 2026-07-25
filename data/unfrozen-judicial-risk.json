@@ -1,64 +1,73 @@
 {
   "meta": {
-    "title": "未解冻资金·司法冻结升级/长期化风险预测",
+    "title": "三项未解冻资金·未来司法冻结升级/长期化风险预测",
     "cutoffDate": "2026-07-25",
-    "excludedFrom047Special": true,
-    "note": "普通冻结明细中的3笔未解冻司法冻结；与047表款专项分开。",
+    "horizonMonths": 12,
+    "monthlyReturnRate": 0.08,
+    "compounding": true,
+    "unrecoverableProb12m": 0.3,
+    "note": "三笔原因已是司法冻结；预测的是未来长期化并难以追回的风险，不含047专项。",
     "formula": {
-      "opportunityCost": "金额 × [(1.08)^(天数÷30) − 1]",
-      "riskAmount": "金额 × 长期化概率",
-      "principalLoss": "风险金额 × 30%（司法冻结后12个月无法追回中性假设）",
-      "totalLoss": "本金损失期望 + 已产生机会成本"
+      "riskAmount": "金额 × 持续/长期化概率",
+      "futurePrincipalLoss": "风险本金 × 30%",
+      "futureOppCost12m": "风险本金 × [(1.08)^12 − 1]",
+      "futureTotalRisk": "未来本金损失 + 未来12个月机会成本"
     },
-    "persistProbRule": "按已冻天数分层：≥30天0.80；15–29天0.75；<15天0.60"
+    "persistProbRule": "已冻≥30天80%；15–29天75%；<15天60%"
   },
   "summary": {
-    "rowCount": 3,
     "totalAmount": 793809.62,
-    "totalOpportunityCost": 45250.4,
     "totalRiskAmount": 571419.84,
-    "totalPrincipalLoss": 171425.95,
-    "totalLoss": 216676.36
+    "futurePrincipalLoss": 171425.95,
+    "futureOppCost12m": 867512.52,
+    "futureTotalRisk": 1038938.47,
+    "alreadyOpportunityCostToCutoff": 45250.4
   },
   "items": [
     {
-      "start": "2026-06-15",
-      "amount": 14573.66,
       "name": "邓宗熙",
-      "reason": "司法冻结",
+      "amount": 14573.66,
+      "start": "2026-06-15",
       "persistProb": 0.8,
+      "reason": "司法冻结",
+      "status": "未解冻",
       "cutoffDate": "2026-07-25",
-      "freezeDays": 40,
-      "opportunityCost": 1574.89,
+      "freezeDaysToCutoff": 40,
+      "alreadyOpportunityCost": 1574.89,
       "riskAmount": 11658.93,
-      "principalLoss": 3497.68,
-      "totalLoss": 5072.57
+      "futurePrincipalLoss": 3497.68,
+      "futureOppCost12m": 17700.24,
+      "futureTotalRisk": 21197.91
     },
     {
-      "start": "2026-06-29",
-      "amount": 614795.54,
       "name": "黎晨曦",
-      "reason": "司法冻结",
+      "amount": 614795.54,
+      "start": "2026-06-29",
       "persistProb": 0.75,
+      "reason": "司法冻结",
+      "status": "未解冻",
       "cutoffDate": "2026-07-25",
-      "freezeDays": 26,
-      "opportunityCost": 42405.08,
+      "freezeDaysToCutoff": 26,
+      "alreadyOpportunityCost": 42405.08,
       "riskAmount": 461096.66,
-      "principalLoss": 138329.0,
-      "totalLoss": 180734.07
+      "futurePrincipalLoss": 138329.0,
+      "futureOppCost12m": 700023.16,
+      "futureTotalRisk": 838352.16
     },
     {
-      "start": "2026-07-22",
-      "amount": 164440.42,
       "name": "陈雷",
-      "reason": "司法冻结",
+      "amount": 164440.42,
+      "start": "2026-07-22",
       "persistProb": 0.6,
+      "reason": "司法冻结",
+      "status": "未解冻",
       "cutoffDate": "2026-07-25",
-      "freezeDays": 3,
-      "opportunityCost": 1270.43,
+      "freezeDaysToCutoff": 3,
+      "alreadyOpportunityCost": 1270.43,
       "riskAmount": 98664.25,
-      "principalLoss": 29599.28,
-      "totalLoss": 30869.71
+      "futurePrincipalLoss": 29599.28,
+      "futureOppCost12m": 149789.12,
+      "futureTotalRisk": 179388.39
     }
   ]
 }
