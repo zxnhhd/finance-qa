@@ -9,6 +9,7 @@
 |------|------|
 | `data/source/资金支付体系优化方案报告.pdf` | 原始报告 |
 | `data/freeze-ledger.json` | 最新冻结明细台账与逐笔机会成本 |
+| `data/judicial-047-special.json` | 047 表款司法冻结特别案例（单独统计） |
 | `data/report-baseline.json` | 结构化基准数据（版本号、指标、方案） |
 | `docs/冻结明细机会成本重算-20260725.md` | 逐笔重算表 |
 | `docs/报告基准摘要.md` | 可读摘要 |

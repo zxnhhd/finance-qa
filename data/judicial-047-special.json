@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "司法冻结交易（047表款）专项机会成本",
+    "caseType": "special_judicial_047",
+    "excludedFromMainFreezeLedger": true,
+    "cutoffDate": "2026-07-25",
+    "formula": "冻结金额 × [(1+8%)^(冻结天数÷30)−1]",
+    "monthlyReturnRate": 0.08,
+    "compounding": true,
+    "notes": [
+      "本专项与 data/freeze-ledger.json 中的普通冻结明细分开统计",
+      "不计入普通冻结明细的总机会成本",
+      "三笔均为未解冻，天数按截止日计算"
+    ]
+  },
+  "summary": {
+    "rowCount": 3,
+    "principal": 7046612.17,
+    "opportunityCostToCutoff": 2506725.96,
+    "legacyOpportunityCostAnnual8pctTo20260715": 167312.65,
+    "lossRateVsOperatingCapital800万": 0.313341,
+    "operatingCapital": 8000000
+  },
+  "items": [
+    {
+      "start": "2026-03-26",
+      "amount": 5233682.49,
+      "account": "银行卡",
+      "note": "047表款",
+      "unfreezeDate": null,
+      "status": "未解冻",
+      "freezeDays": 121,
+      "opportunityCost": 1904974.57,
+      "legacyAnnual8pctTo20260715": 127329.04
+    },
+    {
+      "start": "2026-03-26",
+      "amount": 1622929.68,
+      "account": "银行卡",
+      "note": "047表款",
+      "unfreezeDate": null,
+      "status": "未解冻",
+      "freezeDays": 121,
+      "opportunityCost": 590719.78,
+      "legacyAnnual8pctTo20260715": 39483.88
+    },
+    {
+      "start": "2026-07-03",
+      "amount": 190000.0,
+      "account": "银行卡",
+      "note": "047表款",
+      "unfreezeDate": null,
+      "status": "未解冻",
+      "freezeDays": 22,
+      "opportunityCost": 11031.61,
+      "legacyAnnual8pctTo20260715": 499.73
+    }
+  ]
+}

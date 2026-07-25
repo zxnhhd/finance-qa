@@ -35,7 +35,8 @@
       "冻结明细已更新至 2026-07-25 版（30 笔）。",
       "机会成本按月化回报率 8% 复利：本金×[(1.08)^(天数÷30)−1]。",
       "未解冻条目按截止日已产生机会成本计算。",
-      "明细见 data/freeze-ledger.json。"
+      "明细见 data/freeze-ledger.json。",
+      "047表款司法冻结为特别案例，见 data/judicial-047-special.json，不计入普通冻结总机会成本。"
     ]
   },
   "accountOverview": {
@@ -117,72 +118,44 @@
       "name": "银行风控",
       "shareOfFreezeAmount": 0.642374,
       "amount": 29623474.8
-    }
+    },
+    "excludesSpecialJudicial047": true,
+    "specialJudicial047Ref": "data/judicial-047-special.json"
   },
   "judicialFreeze": {
+    "caseType": "special_judicial_047",
+    "excludedFromMainFreezeOpportunityCost": true,
+    "source": "data/judicial-047-special.json",
     "principal": 7046612.17,
-    "opportunityCostToCutoff": 2264764.55,
-    "lossRateVsOperatingCapital": 0.283096,
-    "annualizedOpportunityCostIfPersist": 10698009.43,
+    "cutoffDate": "2026-07-25",
+    "opportunityCostFormula": "冻结金额 × [(1+8%)^(冻结天数÷30)−1]",
+    "opportunityCostToCutoff": 2506725.96,
+    "legacyOpportunityCostAnnual8pctTo20260715": 167312.65,
+    "lossRateVsOperatingCapital": 0.313341,
     "items": [
       {
         "start": "2026-03-26",
         "amount": 5233682.49,
-        "daysToCutoff": 111,
-        "opportunityCost": 1724170.8
+        "daysToCutoff": 121,
+        "opportunityCost": 1904974.57,
+        "status": "未解冻"
       },
       {
         "start": "2026-03-26",
         "amount": 1622929.68,
-        "daysToCutoff": 111,
-        "opportunityCost": 534653.75
+        "daysToCutoff": 121,
+        "opportunityCost": 590719.78,
+        "status": "未解冻"
       },
       {
         "start": "2026-07-03",
         "amount": 190000.0,
-        "daysToCutoff": 12,
-        "opportunityCost": 5940.0
+        "daysToCutoff": 22,
+        "opportunityCost": 11031.61,
+        "status": "未解冻"
       }
     ],
-    "longTermScenarios": [
-      {
-        "name": "短期较乐观",
-        "months": 6,
-        "unrecoverableRate": 0.1,
-        "futureOppCostWan": 413.55,
-        "cumOppCostWan": 640.02,
-        "principalLossWan": 70.47,
-        "totalLossWan": 710.49
-      },
-      {
-        "name": "一年期",
-        "months": 12,
-        "unrecoverableRate": 0.3,
-        "futureOppCostWan": 1069.8,
-        "cumOppCostWan": 1296.27,
-        "principalLossWan": 211.4,
-        "totalLossWan": 1507.67
-      },
-      {
-        "name": "两年期",
-        "months": 24,
-        "unrecoverableRate": 0.6,
-        "futureOppCostWan": 3763.72,
-        "cumOppCostWan": 3990.2,
-        "principalLossWan": 422.8,
-        "totalLossWan": 4413.0
-      },
-      {
-        "name": "三年期较悲观",
-        "months": 36,
-        "unrecoverableRate": 0.8,
-        "futureOppCostWan": 10547.49,
-        "cumOppCostWan": 10773.97,
-        "principalLossWan": 563.73,
-        "totalLossWan": 11337.7
-      }
-    ],
-    "note": "原报告 047 表款专项测算；最新冻结明细中的“司法冻结”分类汇总见 freezeSummary.causeBreakdown，明细见 freeze-ledger.json。"
+    "note": "047表款特别案例；三笔均未解冻；不计入 freeze-ledger 总机会成本。"
   },
   "upgradeRiskOnUnfrozen": {
     "items": [
