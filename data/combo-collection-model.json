@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "组合收款测算（含直付采购通道）",
+    "updatedAt": "2026-07-25",
+    "salesBaseYuan": 297616216.98,
+    "salesBaseWan": 29761.62,
+    "directPayMonthlyYuan": 200000000,
+    "directPayMonthlyWan": 20000,
+    "directPayDailyWan": 666.67,
+    "throughCompanyYuan": 97616216.98000002,
+    "throughCompanyWan": 9761.62,
+    "notes": [
+      "每月约2亿元客户表款不进我方银行卡，由客户直接打至采购方提供的账户",
+      "日均约666.67万元直付采购",
+      "A/B/C仅对“仍经我方通道”的剩余流水切分，且私卡厚度拉开以便对比",
+      "直付通道不计第三方手续费与我方私卡冻结隐性成本（但对账/合规风险另述）"
+    ]
+  },
+  "rates": {
+    "thirdPartyFeeRate": 0.0032,
+    "smallScaleVatRate": 0.01,
+    "surchargeRateOnVat": 0.06,
+    "effectiveTaxRateOnCorporate": 0.0106,
+    "privateCardHiddenRate": 0.00068617,
+    "monthlyConsignmentFeePerEntityWan": 40
+  },
+  "plans": [
+    {
+      "id": "A",
+      "name": "高私卡保周转",
+      "recommended": false,
+      "entities": 2,
+      "directPayWan": 20000.0,
+      "directPayPctOfSales": 0.672006,
+      "corporateWan": 80,
+      "corporatePct": 0.002688,
+      "thirdPartyWan": 4356.73,
+      "thirdPartyPct": 0.146388,
+      "privateCardWan": 5324.89,
+      "privateCardPct": 0.178918,
+      "privateShareOfRemainAfterCorp": 0.55,
+      "taxWan": 0.85,
+      "thirdPartyFeeWan": 13.94,
+      "privateHiddenWan": 3.65,
+      "taxPlusThirdPartyWan": 14.79,
+      "totalWan": 18.44,
+      "relativeToSales": 0.00062,
+      "directPayDailyWan": 666.67
+    },
+    {
+      "id": "B",
+      "name": "均衡推荐",
+      "recommended": true,
+      "entities": 5,
+      "directPayWan": 20000.0,
+      "directPayPctOfSales": 0.672006,
+      "corporateWan": 200,
+      "corporatePct": 0.00672,
+      "thirdPartyWan": 6884.37,
+      "thirdPartyPct": 0.231317,
+      "privateCardWan": 2677.25,
+      "privateCardPct": 0.089957,
+      "privateShareOfRemainAfterCorp": 0.28,
+      "taxWan": 2.12,
+      "thirdPartyFeeWan": 22.03,
+      "privateHiddenWan": 1.84,
+      "taxPlusThirdPartyWan": 24.15,
+      "totalWan": 25.99,
+      "relativeToSales": 0.000873,
+      "directPayDailyWan": 666.67
+    },
+    {
+      "id": "C",
+      "name": "强控冻低私卡",
+      "recommended": false,
+      "entities": 8,
+      "directPayWan": 20000.0,
+      "directPayPctOfSales": 0.672006,
+      "corporateWan": 320,
+      "corporatePct": 0.010752,
+      "thirdPartyWan": 8686.29,
+      "thirdPartyPct": 0.291862,
+      "privateCardWan": 755.33,
+      "privateCardPct": 0.025379,
+      "privateShareOfRemainAfterCorp": 0.08,
+      "taxWan": 3.39,
+      "thirdPartyFeeWan": 27.8,
+      "privateHiddenWan": 0.52,
+      "taxPlusThirdPartyWan": 31.19,
+      "totalWan": 31.71,
+      "relativeToSales": 0.001065,
+      "directPayDailyWan": 666.67
+    }
+  ],
+  "recommendation": "B",
+  "recommendationReasons": [
+    "直付2亿已大幅降低经卡暴露，B在剩余通道里把私卡压到约三成弱，控冻与周转平衡",
+    "A私卡仍占剩余通道一半以上，冻结暴露明显更高",
+    "C私卡过薄，剩余通道几乎全靠第三方，弹性不足",
+    "三案成本差距拉开，便于决策对比"
+  ]
+}
