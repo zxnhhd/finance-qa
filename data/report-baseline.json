@@ -1,12 +1,13 @@
 {
   "meta": {
     "title": "资金支付体系优化方案报告",
-    "baselineVersion": "2026-07-22",
+    "baselineVersion": "2026-07-25",
     "sourceFile": "data/source/资金支付体系优化方案报告.pdf",
     "statisticsPeriod": {
       "start": "2026-05-20",
-      "end": "2026-07-15",
-      "days": 57
+      "end": "2026-07-25",
+      "days": 66,
+      "cutoffNote": "未解冻条目按 2026-07-25 截止计算"
     },
     "assumptions": {
       "operatingCapital": 8000000,
@@ -21,19 +22,20 @@
       "monthlyReturnRate": 0.08,
       "returnDayDivisor": 30,
       "capitalTurnoverMonths": 9,
-      "opportunityCostFormula": "冻结金额 × [(1 + 8%)^(冻结天数 ÷ 30) − 1]",
+      "opportunityCostFormula": "冻结金额 × [(1+8%)^(冻结天数÷30)−1]",
       "opportunityCostNote": "月收益继续投入并复利；9个月后本金倍数约1.999，即接近翻倍。",
       "compounding": true,
       "nineMonthCapitalMultiplier": 1.9990046271,
       "nineMonthCompoundReturn": 0.9990046271,
-      "effectiveAnnualReturn": 1.5181701168
+      "effectiveAnnualReturn": 1.5181701168,
+      "nineMonthMultiplier": 1.999005
     },
     "notes": [
       "本文件是后续问答的唯一数据基准。",
-      "机会成本按月化回报率8%复利计算：本金×[(1.08)^(天数÷30)−1]。",
-      "当月收益继续投入；连续9个月后本金约为原来的1.999倍，接近翻倍。",
-      "若报告数据变更，需同步更新本文件与 js/knowledge.js，并提升 baselineVersion。",
-      "变更记录：2026-07-22 明确月化8%为复利，而非单利。"
+      "冻结明细已更新至 2026-07-25 版（30 笔）。",
+      "机会成本按月化回报率 8% 复利：本金×[(1.08)^(天数÷30)−1]。",
+      "未解冻条目按截止日已产生机会成本计算。",
+      "明细见 data/freeze-ledger.json。"
     ]
   },
   "accountOverview": {
@@ -77,40 +79,45 @@
     ]
   },
   "freezeSummary": {
-    "totalFreezeAmount": 42277626.12,
-    "totalOpportunityCost": 435555.06,
-    "opportunityCostFormula": "冻结金额 × [(1 + 8%)^(冻结天数 ÷ 30) − 1]",
-    "capitalLossRate57d": 0.054444,
-    "annualizedOpportunityCost": 2789080.64,
-    "annualizedLossRate": 0.348635,
-    "avgDailyFrozenCapital": 2947410.52,
-    "avgDailyFrozenShareOfOperatingCapital": 0.3684,
-    "currentUnfrozenAmount": 1639857.43,
-    "currentUnfrozenShare": 0.205,
-    "primaryCause": {
-      "name": "银行风控",
-      "shareOfFreezeAmount": 0.64,
-      "amount": 27088454.8
-    },
+    "sourceLedger": "data/freeze-ledger.json",
+    "rowCount": 30,
+    "totalFreezeAmount": 46115587.15,
+    "totalOpportunityCost": 491831.84,
+    "opportunityCostFormula": "冻结金额 × [(1+8%)^(冻结天数÷30)−1]",
     "opportunityCostAssumptions": {
       "monthlyReturnRate": 0.08,
       "dayDivisor": 30,
       "compounding": true,
-      "monthsToNearlyDouble": 9
+      "monthsToNearlyDouble": 9,
+      "cutoffDateForUnfrozen": "2026-07-25"
     },
-    "previousOpportunityCostAnnual8pct": 36822.47,
+    "capitalLossRatePeriod": 0.061479,
+    "annualizedOpportunityCost": 2719979.12,
+    "annualizedLossRate": 0.339997,
+    "avgDailyFrozenCapital": 2869566.23,
+    "avgDailyFrozenShareOfOperatingCapital": 0.358696,
+    "currentUnfrozenAmount": 793809.62,
+    "currentUnfrozenOpportunityCost": 45250.4,
+    "currentUnfrozenShare": 0.099226,
     "causeBreakdown": [
       {
         "name": "银行风控",
-        "amount": 27088454.8,
-        "share": 0.64
+        "amount": 29623474.8,
+        "share": 0.642374,
+        "opportunityCost": 220387.41
       },
       {
         "name": "司法冻结",
-        "amount": 15189171.32,
-        "share": 0.36
+        "amount": 16492112.35,
+        "share": 0.357626,
+        "opportunityCost": 271444.43
       }
-    ]
+    ],
+    "primaryCause": {
+      "name": "银行风控",
+      "shareOfFreezeAmount": 0.642374,
+      "amount": 29623474.8
+    }
   },
   "judicialFreeze": {
     "principal": 7046612.17,
@@ -174,7 +181,8 @@
         "principalLossWan": 563.73,
         "totalLossWan": 11337.7
       }
-    ]
+    ],
+    "note": "原报告 047 表款专项测算；最新冻结明细中的“司法冻结”分类汇总见 freezeSummary.causeBreakdown，明细见 freeze-ledger.json。"
   },
   "upgradeRiskOnUnfrozen": {
     "items": [
@@ -390,13 +398,14 @@
   "comboPricingInputs": {
     "juneTotalFlow": 781100173.8,
     "juneBankCardFlow": 571661769.1,
-    "juneOpportunityCost": 135134.68,
-    "freezeRiskFeeRate": 0.00023639,
+    "juneOpportunityCost": 201322.14,
+    "freezeRiskFeeRate": 0.00035217,
     "judicialBadDebtRate": 0.000334,
-    "combinedPrivateCardHiddenRate": 0.00057039,
+    "combinedPrivateCardHiddenRate": 0.00068617,
     "monthlyBadDebtExpectation": 190724.59,
     "previousJuneOpportunityCostAnnual8pct": 11106.96,
-    "note": "6月为单月汇总；一个月复利一期仍为8%，故此项与月化8%单月结果一致。"
+    "note": "6月为单月汇总；一个月复利一期仍为8%，故此项与月化8%单月结果一致。",
+    "juneOpportunityCostBasis": "6月开始冻结的各笔机会成本合计（月化8%复利）"
   },
   "recommendedPlans": {
     "budgetCeilingWan": 100,
@@ -409,9 +418,9 @@
         "thirdPartyPct": 0.75,
         "privateCardPct": 0.2446,
         "taxPlusThirdPartyWan": 73.12,
-        "privateHiddenWan": 4.15,
-        "totalWan": 77.27,
-        "relativeToSales": 0.002597
+        "privateHiddenWan": 5.0,
+        "totalWan": 78.12,
+        "relativeToSales": 0.002625
       },
       {
         "id": "B",
@@ -422,9 +431,9 @@
         "thirdPartyPct": 0.85,
         "privateCardPct": 0.1419,
         "taxPlusThirdPartyWan": 83.5,
-        "privateHiddenWan": 2.41,
-        "totalWan": 85.91,
-        "relativeToSales": 0.002886
+        "privateHiddenWan": 2.9,
+        "totalWan": 86.4,
+        "relativeToSales": 0.002903
       },
       {
         "id": "C",
@@ -434,17 +443,17 @@
         "thirdPartyPct": 0.92,
         "privateCardPct": 0.0692,
         "taxPlusThirdPartyWan": 91.01,
-        "privateHiddenWan": 1.18,
-        "totalWan": 92.19,
-        "relativeToSales": 0.003098
+        "privateHiddenWan": 1.41,
+        "totalWan": 92.42,
+        "relativeToSales": 0.003105
       }
     ],
     "recommendation": "B",
     "recommendationReasons": [
-      "预算舒适：综合约 86 万，距 100 万预算有余量",
-      "控冻到位：第三方 85%，私卡从约 25% 压到约 14%",
-      "采购不断：仍留约 14% 私卡支撑 ≤10 万小额与应急",
-      "主体可落地：6 家、每家寄售服务费 40 万，比 8 家更好管"
+      "预算舒适：综合成本仍在 100 万预算内",
+      "控冻到位：第三方 85%，私卡约 14%",
+      "采购不断：仍留私卡缓冲支撑小额与应急",
+      "主体可落地：6 家、每家寄售服务费 40 万"
     ]
   }
 }
