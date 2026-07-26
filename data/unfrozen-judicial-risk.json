@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "三项未解冻资金·未来司法冻结升级/长期化风险预测",
+    "cutoffDate": "2026-07-25",
+    "horizonMonths": 12,
+    "monthlyReturnRate": 0.08,
+    "compounding": true,
+    "unrecoverableProb12m": 0.3,
+    "note": "三笔原因已是司法冻结；预测的是未来长期化并难以追回的风险，不含047专项。",
+    "formula": {
+      "riskAmount": "金额 × 持续/长期化概率",
+      "futurePrincipalLoss": "风险本金 × 30%",
+      "futureOppCost12m": "风险本金 × [(1.08)^12 − 1]",
+      "futureTotalRisk": "未来本金损失 + 未来12个月机会成本"
+    },
+    "persistProbRule": "已冻≥30天80%；15–29天75%；<15天60%"
+  },
+  "summary": {
+    "totalAmount": 793809.62,
+    "totalRiskAmount": 571419.84,
+    "futurePrincipalLoss": 171425.95,
+    "futureOppCost12m": 867512.52,
+    "futureTotalRisk": 1038938.47,
+    "alreadyOpportunityCostToCutoff": 45250.4
+  },
+  "items": [
+    {
+      "name": "邓宗熙",
+      "amount": 14573.66,
+      "start": "2026-06-15",
+      "persistProb": 0.8,
+      "reason": "司法冻结",
+      "status": "未解冻",
+      "cutoffDate": "2026-07-25",
+      "freezeDaysToCutoff": 40,
+      "alreadyOpportunityCost": 1574.89,
+      "riskAmount": 11658.93,
+      "futurePrincipalLoss": 3497.68,
+      "futureOppCost12m": 17700.24,
+      "futureTotalRisk": 21197.91
+    },
+    {
+      "name": "黎晨曦",
+      "amount": 614795.54,
+      "start": "2026-06-29",
+      "persistProb": 0.75,
+      "reason": "司法冻结",
+      "status": "未解冻",
+      "cutoffDate": "2026-07-25",
+      "freezeDaysToCutoff": 26,
+      "alreadyOpportunityCost": 42405.08,
+      "riskAmount": 461096.66,
+      "futurePrincipalLoss": 138329.0,
+      "futureOppCost12m": 700023.16,
+      "futureTotalRisk": 838352.16
+    },
+    {
+      "name": "陈雷",
+      "amount": 164440.42,
+      "start": "2026-07-22",
+      "persistProb": 0.6,
+      "reason": "司法冻结",
+      "status": "未解冻",
+      "cutoffDate": "2026-07-25",
+      "freezeDaysToCutoff": 3,
+      "alreadyOpportunityCost": 1270.43,
+      "riskAmount": 98664.25,
+      "futurePrincipalLoss": 29599.28,
+      "futureOppCost12m": 149789.12,
+      "futureTotalRisk": 179388.39
+    }
+  ]
+}

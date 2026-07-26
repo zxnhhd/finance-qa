@@ -1,7 +1,7 @@
 {
   "name": "finance-qa",
-  "version": "1.0.0",
-  "description": "财务问答知识库 — 常见财务问题检索与解答",
+  "version": "1.1.0",
+  "description": "基于《资金支付体系优化方案报告》的财务问答知识库",
   "private": true,
   "scripts": {
     "start": "npx --yes serve ."

@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "司法坏账率（3笔未解冻）",
+    "formula": "折月坏账期望 ÷ 6月银行卡流水",
+    "折月坏账期望": "坏账期望合计 × 30 ÷ 观察期天数",
+    "坏账期望": "金额 × 升级概率 × 30%",
+    "observationDays": 66,
+    "observationPeriod": "2026-05-20 ~ 2026-07-25",
+    "juneBankCardFlow": 571661769.1,
+    "note": "图中合计1207922.39/362376.72为旧5笔数据，已按当前3笔重算"
+  },
+  "items": [
+    {
+      "date": "6/15",
+      "amount": 14573.66,
+      "p": 0.7,
+      "type": "涉案交易",
+      "upgrade": 10201.56,
+      "badDebt": 3060.47
+    },
+    {
+      "date": "6/29",
+      "amount": 614795.54,
+      "p": 0.8,
+      "type": "公安冻结",
+      "upgrade": 491836.43,
+      "badDebt": 147550.93
+    },
+    {
+      "date": "7/23",
+      "amount": 164440.42,
+      "p": 0.6,
+      "type": "公安协查",
+      "upgrade": 98664.25,
+      "badDebt": 29599.27
+    }
+  ],
+  "summary": {
+    "totalUpgradeExpectation": 600702.24,
+    "totalBadDebtExpectation": 180210.67,
+    "monthlyBadDebtExpectation": 81913.94,
+    "judicialBadDebtRate": 0.00014329,
+    "judicialBadDebtRatePct": 0.0143
+  }
+}

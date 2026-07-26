@@ -1,6 +1,7 @@
 (() => {
   const kb = window.FINANCE_KB || [];
   const categories = window.FINANCE_CATEGORIES || ["全部"];
+  const meta = window.FINANCE_KB_META || {};
 
   const faqList = document.getElementById("faqList");
   const categoryFilters = document.getElementById("categoryFilters");
@@ -8,6 +9,15 @@
   const questionInput = document.getElementById("questionInput");
   const askBtn = document.getElementById("askBtn");
   const answerBox = document.getElementById("answerBox");
+  const baselineBadge = document.getElementById("baselineBadge");
+  const footerMeta = document.getElementById("footerMeta");
+
+  if (baselineBadge && meta.baselineVersion) {
+    baselineBadge.textContent = `基准 ${meta.baselineVersion} · ${meta.sourceTitle || "报告"}`;
+  }
+  if (footerMeta) {
+    footerMeta.textContent = `FinanceQA · 基准 ${meta.baselineVersion || "-"} · ${meta.baselineData || "data/report-baseline.json"}`;
+  }
 
   let activeCategory = "全部";
 
@@ -129,14 +139,15 @@
     if (!best) {
       showAnswer(
         `<div class="meta">暂未匹配</div>
-         <div>知识库里还没有足够接近的答案。你可以浏览下方分类，或把这个问题补充进 <code>js/knowledge.js</code>。</div>`
+         <div>当前基准报告知识库里没有足够接近的答案。请换个报告内指标提问，或在更新报告后同步补充 <code>js/knowledge.js</code> / <code>data/report-baseline.json</code>。</div>`
       );
       return;
     }
 
     const { item, score } = best;
+    const baseline = meta.baselineVersion ? ` · 基准 ${meta.baselineVersion}` : "";
     showAnswer(
-      `<div class="meta">匹配 · ${item.category} · 相关度 ${score}</div>
+      `<div class="meta">匹配 · ${item.category} · 相关度 ${score}${baseline}</div>
        <strong>${item.question}</strong>
        <div style="margin-top:0.55rem">${item.answer}</div>`
     );
