@@ -415,9 +415,9 @@
     "juneBankCardFlow": 571661769.1,
     "juneOpportunityCost": 201322.14,
     "freezeRiskFeeRate": 0.00035217,
-    "judicialBadDebtRate": 0.000334,
-    "combinedPrivateCardHiddenRate": 0.00068617,
-    "monthlyBadDebtExpectation": 190724.59,
+    "judicialBadDebtRate": 0.00014329,
+    "combinedPrivateCardHiddenRate": 0.00049546,
+    "monthlyBadDebtExpectation": 81913.94,
     "previousJuneOpportunityCostAnnual8pct": 11106.96,
     "note": "6月为单月汇总；一个月复利一期仍为8%，故此项与月化8%单月结果一致。",
     "juneOpportunityCostBasis": "6月开始冻结的各笔机会成本合计（月化8%复利）",
@@ -425,7 +425,8 @@
     "directPayMonthlyWan": 20000,
     "directPayDailyWan": 666.67,
     "throughCompanyMonthlyYuan": 97616216.98000002,
-    "modelNote": "组合收款已加入每月2亿直付采购通道；A/B/C对比已拉开。详见 data/combo-collection-model.json"
+    "modelNote": "组合收款已加入每月2亿直付采购通道；A/B/C对比已拉开。详见 data/combo-collection-model.json",
+    "judicialBadDebtRateSource": "data/judicial-bad-debt-rate.json"
   },
   "recommendedPlans": {
     "budgetCeilingWan": 100,
