@@ -1,30 +1,35 @@
 {
   "meta": {
-    "title": "组合收款测算（按6月银行卡收支流水）",
+    "title": "组合收款测算（按6月全部收支流水）",
     "updatedAt": "2026-07-26",
-    "flowBaseYuan": 571661769.1,
-    "flowBaseWan": 57166.18,
-    "flowBaseLabel": "2026年6月银行卡收支流水",
-    "juneTotalFlowYuan": 781100173.8,
+    "flowBaseYuan": 781100173.8,
+    "flowBaseWan": 78110.02,
+    "flowBaseLabel": "2026年6月全部收支流水（银行卡+支付宝/微信等）",
+    "juneBankCardFlowYuan": 571661769.1,
+    "juneBankCardFlowWan": 57166.18,
+    "juneOtherChannelFlowYuan": 209438404.7,
+    "juneOtherChannelFlowWan": 20943.84,
+    "juneOtherChannelNote": "总流水减银行卡流水，含支付宝、微信等非银行卡收付",
     "directPayMonthlyInYuan": 200000000,
     "directPayMonthlyOutYuan": 200000000,
     "directPayMonthlyInWan": 20000,
     "directPayMonthlyOutWan": 20000,
     "directPayDailyWan": 666.67,
+    "directPayChannel": "仅针对银行卡侧的匹配收付；客户直付采购方",
     "directPayGrossStripWan": 40000,
-    "throughCompanyYuan": 171661769.1,
-    "throughCompanyWan": 17166.18,
+    "throughCompanyYuan": 381100173.8,
+    "throughCompanyWan": 38110.02,
     "minEntitiesConstraint": 3,
     "minEntitiesNote": "公司已有3个小规模主体在缴寄售服务费税，方案A主体数不得低于3",
     "notes": [
-      "测算基数=6月银行卡实际收支流水571,661,769.10元，不用销售额",
-      "直付匹配流水：每天约收到666.67万，同时将同等金额打给采购对手方买表；月收2亿+月支2亿",
-      "客户直接打给采购方账户，该收+支不进我方银行卡，从6月收支流水中剥离合计4亿",
-      "经我方剩余流水≈17,166.18万元，再按A/B/C切分公户/第三方/个人卡",
+      "测算基数=6月全部收支流水781,100,173.80元（银行卡57,166.18万 + 支付宝/微信等其他20,943.84万），不是只算银行卡",
+      "直付2亿仅指银行卡匹配流水：日收666.67万、同日支666.67万给采购方；月收2亿+月支2亿从总流水剥离合计4亿",
+      "支付宝/微信等其他通道仍留在剩余流水中，按公户/第三方/个人卡分配后照常计税费或手续费/隐性成本",
+      "经我方剩余≈38,110.02万元，全部纳入A/B/C通道分配并计费",
       "公司已有3个小规模主体缴税，故A/B/C主体取3/6/12",
       "私卡厚度按剩余扣公户后约70%/25%/3%拉开对比",
-      "直付通道不计第三方手续费与我方私卡冻结隐性成本",
-      "私卡隐性费率：冻结风险0.0352%+司法坏账0.0143%=综合0.0495%（分母同为6月银行卡流水）"
+      "直付通道不计第三方手续费与我方私卡冻结隐性成本；其余通道均计费",
+      "私卡隐性费率0.049546%（冻结风险+司法坏账，原费率分母为银行卡流水，此处费率沿用）"
     ]
   },
   "rates": {
@@ -38,13 +43,13 @@
     "monthlyConsignmentFeePerEntityWan": 40
   },
   "calculationSteps": {
-    "step1_flowBase": "测算基数=6月银行卡收支流水=57,166.17691万元",
-    "step2_directMatched": "直付匹配：月收20,000万+月支20,000万（日均各666.67万），客户直付采购方，不经我方卡",
-    "step3_strip": "从收支流水剥离收+支合计40,000万元（占基数69.9714%）",
-    "step4_remain": "经我方剩余=57,166.17691-40,000=17,166.17691万元（30.0286%）",
-    "step5_corporate": "公户寄售服务费=主体数×40万；税费=公户×1.06%",
-    "step6_privateThird": "剩余扣公户后，私卡按70%/25%/3%切分，第三方=其余；手续费=第三方×0.32%；私卡隐性=私卡×0.049546%",
-    "step7_total": "综合成本=税费+第三方手续费+私卡隐性；占比分母=6月银行卡收支流水"
+    "step1_flowBase": "测算基数=6月全部收支流水=78,110.01738万元（含银行卡+支付宝/微信等）",
+    "step2_splitChannels": "其中银行卡57,166.17691万，其他通道20,943.84047万",
+    "step3_directMatched": "银行卡直付匹配：月收20,000万+月支20,000万（日均各666.67万），客户直付采购方",
+    "step4_strip": "仅剥离该银行卡直付收+支合计40,000万元；其他通道不剥离",
+    "step5_remain": "经我方剩余=78,110.01738-40,000=38,110.01738万元（含原支付宝/微信等）",
+    "step6_allocate": "剩余全部按公户/第三方/个人卡分配；公户计小规模税费，第三方计0.32%手续费，私卡计0.049546%隐性成本",
+    "step7_total": "综合成本=税费+第三方手续费+私卡隐性；占比分母=6月全部收支流水"
   },
   "plans": [
     {
@@ -54,20 +59,20 @@
       "entities": 3,
       "directPayInWan": 20000.0,
       "directPayOutWan": 20000.0,
-      "directPayGrossPctOfFlow": 0.699714,
+      "directPayGrossPctOfFlow": 0.512098,
       "corporateWan": 120,
-      "corporatePctOfFlow": 0.002099,
-      "thirdPartyWan": 5113.85,
-      "thirdPartyPctOfFlow": 0.089456,
-      "privateCardWan": 11932.32,
-      "privateCardPctOfFlow": 0.208730,
+      "corporatePctOfFlow": 0.001536,
+      "thirdPartyWan": 11397.01,
+      "thirdPartyPctOfFlow": 0.14591,
+      "privateCardWan": 26593.01,
+      "privateCardPctOfFlow": 0.340456,
       "privateShareOfRemainAfterCorp": 0.7,
       "taxWan": 1.27,
-      "thirdPartyFeeWan": 16.36,
-      "privateHiddenWan": 5.91,
-      "taxPlusThirdPartyWan": 17.63,
-      "totalWan": 23.55,
-      "relativeToFlow": 0.000412,
+      "thirdPartyFeeWan": 36.47,
+      "privateHiddenWan": 13.18,
+      "taxPlusThirdPartyWan": 37.74,
+      "totalWan": 50.92,
+      "relativeToFlow": 0.000652,
       "directPayDailyWan": 666.67
     },
     {
@@ -77,21 +82,22 @@
       "entities": 6,
       "directPayInWan": 20000.0,
       "directPayOutWan": 20000.0,
-      "directPayGrossPctOfFlow": 0.699714,
+      "directPayGrossPctOfFlow": 0.512098,
       "corporateWan": 240,
-      "corporatePctOfFlow": 0.004198,
-      "thirdPartyWan": 12694.63,
-      "thirdPartyPctOfFlow": 0.222065,
-      "privateCardWan": 4231.54,
-      "privateCardPctOfFlow": 0.074022,
+      "corporatePctOfFlow": 0.003073,
+      "thirdPartyWan": 28402.51,
+      "thirdPartyPctOfFlow": 0.363622,
+      "privateCardWan": 9467.5,
+      "privateCardPctOfFlow": 0.121207,
       "privateShareOfRemainAfterCorp": 0.25,
       "taxWan": 2.54,
-      "thirdPartyFeeWan": 40.62,
-      "privateHiddenWan": 2.10,
-      "taxPlusThirdPartyWan": 43.16,
-      "totalWan": 45.26,
-      "relativeToFlow": 0.000792,
-      "directPayDailyWan": 666.67
+      "thirdPartyFeeWan": 90.89,
+      "privateHiddenWan": 4.69,
+      "taxPlusThirdPartyWan": 93.43,
+      "totalWan": 98.12,
+      "relativeToFlow": 0.001256,
+      "directPayDailyWan": 666.67,
+      "budgetNote": "贴近100万月预算上限"
     },
     {
       "id": "C",
@@ -100,48 +106,47 @@
       "entities": 12,
       "directPayInWan": 20000.0,
       "directPayOutWan": 20000.0,
-      "directPayGrossPctOfFlow": 0.699714,
+      "directPayGrossPctOfFlow": 0.512098,
       "corporateWan": 480,
-      "corporatePctOfFlow": 0.008397,
-      "thirdPartyWan": 16185.59,
-      "thirdPartyPctOfFlow": 0.283132,
-      "privateCardWan": 500.59,
-      "privateCardPctOfFlow": 0.008757,
+      "corporatePctOfFlow": 0.006145,
+      "thirdPartyWan": 36501.12,
+      "thirdPartyPctOfFlow": 0.467304,
+      "privateCardWan": 1128.9,
+      "privateCardPctOfFlow": 0.014453,
       "privateShareOfRemainAfterCorp": 0.03,
       "taxWan": 5.09,
-      "thirdPartyFeeWan": 51.79,
-      "privateHiddenWan": 0.25,
-      "taxPlusThirdPartyWan": 56.88,
-      "totalWan": 57.13,
-      "relativeToFlow": 0.000999,
-      "directPayDailyWan": 666.67
+      "thirdPartyFeeWan": 116.8,
+      "privateHiddenWan": 0.56,
+      "taxPlusThirdPartyWan": 121.89,
+      "totalWan": 122.45,
+      "relativeToFlow": 0.001568,
+      "directPayDailyWan": 666.67,
+      "budgetNote": "超出100万月预算上限"
     }
   ],
   "comparison": {
     "privateCardPctOfFlow": {
-      "A": 0.20873,
-      "B": 0.074022,
-      "C": 0.008757
+      "A": 0.340456,
+      "B": 0.121207,
+      "C": 0.014453
     },
     "totalCostWan": {
-      "A": 23.55,
-      "B": 45.26,
-      "C": 57.13
+      "A": 50.92,
+      "B": 98.12,
+      "C": 122.45
     },
     "costDeltaWan": {
-      "AtoB": 21.71,
-      "BtoC": 11.87,
-      "AtoC": 33.58
+      "AtoB": 47.2,
+      "BtoC": 24.33,
+      "AtoC": 71.53
     },
-    "note": "分母改为6月银行卡收支流水；直付按收+支各2亿剥离；私卡暴露约20.9%/7.4%/0.9%，成本差A→C约33.6万"
+    "note": "基数含全部收付通道；仅剥离银行卡直付收+支4亿；支付宝/微信等进入剩余并计费；B贴预算，C超预算"
   },
   "recommendation": "B",
   "recommendationReasons": [
-    "直付匹配收+支各2亿，从6月银行卡收支流水中剥离约70%暴露",
-    "A已按现有3家主体起步，不再低于已有缴税主体数",
-    "B扩到6家并把私卡压到流水约7.4%（剩余扣公户后约25%），控冻与应急周转平衡",
-    "A私卡仍约占流水20.9%，冻结暴露更高，只比B少约21.7万不值",
-    "C私卡仅约0.9%，几乎全靠第三方，弹性不足，却比B多约11.9万",
-    "三案成本约23.55/45.26/57.13万，均在100万预算内，A→C差约33.6万，对比清晰"
+    "测算基数含银行卡+支付宝/微信等全部流水，剩余通道均计税费/手续费/隐性成本",
+    "银行卡直付匹配收+支各2亿，降低银行卡风控暴露，但不豁免其他通道费用",
+    "A已按现有3家主体起步；B扩到6家，私卡约占全部流水12.1%，控冻与周转平衡，成本约98万贴近预算",
+    "C私卡仅约1.4%，第三方过重，综合成本约122万超100万预算"
   ]
 }
